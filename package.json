@@ -1,0 +1,22 @@
+{
+  "name": "vue-cli-plugin-lbhc",
+  "version": "0.0.1",
+  "description": "Luban H5 Component Template for Vue CLI 3",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luban-h5/vue-cli-plugin-lbhc.git"
+  },
+  "keywords": [
+    "vue",
+    "cli",
+    "custom",
+    "template",
+    "plugin"
+  ],
+  "homepage": "https://github.com/luban-h5/vue-cli-plugin-lbhc#readme",
+  "author": "ly525 <lantern.done@gmail.com>",
+  "license": "MIT"
+}

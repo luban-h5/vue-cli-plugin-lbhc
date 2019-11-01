@@ -7,3 +7,34 @@
 ```
 vue create --preset luban-h5/vue-cli-plugin-lbhc my-luban-component-demo
 ```
+
+
+### 目录结构
+
+```bash
+mini-editor 模拟鲁班H5的核心编辑器功能
+component   你要编写组件的目录
+  entry.js  组件入口（类似index.js）
+  editor.js 组件的编辑面板配置
+
+```
+
+
+### 开发流程
+
+```bash
+vue create --preset luban-h5/vue-cli-plugin-lbhc lbc-demo
+cd lbc-demo
+yarn serve
+
+# 构建、发布个人组件
+yarn build
+npm login
+npm publish
+
+
+# 构建发布 scope 组件
+yarn build
+npm login
+npm publish --access publish
+```

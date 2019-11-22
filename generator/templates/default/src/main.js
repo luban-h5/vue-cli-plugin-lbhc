@@ -1,9 +1,9 @@
 import Vue from 'vue'
-// import App from './App.vue'
 import App from './mini-editor/index'
-import './plugins/ant-design-vue.js'
-import './plugins/font.js'
-
+import './mini-editor/plugins/ant-design-vue.js'
+import './mini-editor/plugins/font.js'
+import './mini-editor/support/index'
+import './mini-editor/styles/index.scss'
 
 Vue.config.productionTip = false
 

@@ -6,7 +6,8 @@ export default {
           style={{ background: '#fff', margin: 0, minHeight: '280px' }}
         >
           <a-card title="组件预览面板" style="height: 100%;">
-          <a href="#" slot="extra">more</a>
+          {/* <a href="#" slot="extra">more</a> */}
+          <span slot="extra">{this.$slots.actions}</span>
           <div>{this.$slots.default}</div>
         </a-card>
         </a-layout-content>

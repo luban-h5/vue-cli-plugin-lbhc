@@ -4,7 +4,7 @@ function parsePx(px) {
 }
 
 // #! 编辑状态，不可以点击的按钮，因为点击按钮会触发一些默认行为，比如表单提交等
-const disabledPluginsForEditMode = ['lbp-form-input', 'lbp-form-button']
+const disabledPluginsForEditMode = ['lbp-form-input', 'lbp-form-button', 'lbp-video']
 const cloneObj = (value) => JSON.parse(JSON.stringify(value))
 
 const defaultStyle = {
@@ -40,20 +40,34 @@ class Element {
     this.animations = ele.animations || []
   }
 
-  getDefaultPluginProps (editorConfig) {
-    // init prop of plugin
-    const propConf = editorConfig.propsConfig
+  // init prop of plugin
+  getDefaultPluginProps (propsConfig) {
     const pluginProps = {}
-    Object.keys(propConf).forEach(key => {
+    Object.keys(propsConfig).forEach(key => {
       // #6
       if (key === 'name') {
         console.warn('Please do not use {name} as plugin prop')
         return
       }
-      pluginProps[key] = propConf[key].defaultPropValue
+      const defaultValue = propsConfig[key].default
+      pluginProps[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue
     })
     return pluginProps
   }
+  // getDefaultPluginProps (editorConfig) {
+  //   // init prop of plugin
+  //   const propConf = editorConfig.propsConfig
+  //   const pluginProps = {}
+  //   Object.keys(propConf).forEach(key => {
+  //     // #6
+  //     if (key === 'name') {
+  //       console.warn('Please do not use {name} as plugin prop')
+  //       return
+  //     }
+  //     pluginProps[key] = propConf[key].defaultPropValue
+  //   })
+  //   return pluginProps
+  // }
 
   getStyle ({ position = 'static', isRem = false } = {}) {
     if (this.name === 'lbp-background') {
@@ -82,7 +96,8 @@ class Element {
   getProps ({ mode = 'edit' } = {}) {
     return {
       ...this.pluginProps,
-      disabled: disabledPluginsForEditMode.includes(this.name) && mode === 'edit'
+      disabled: disabledPluginsForEditMode.includes(this.name) && mode === 'edit',
+      editorMode: mode
     }
   }
 
@@ -100,11 +115,11 @@ class Element {
     }
   }
 
-  getPreviewData ({ position = 'static', isRem = false } = {}) {
-    const style = this.getStyle({ position, isRem})
+  getPreviewData ({ position = 'static', isRem = false, mode = 'preview' } = {}) {
+    const style = this.getStyle({ position })
     const data = {
       style,
-      props: this.getProps({ mode: 'preview',  }),
+      props: this.getProps({ mode }),
       attrs: this.getAttrs()
     }
     return data

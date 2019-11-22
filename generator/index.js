@@ -42,12 +42,15 @@ function addDependencies (api, opts) {
    // 修改 `package.json` 中的字段
    api.extendPackage({
     "name": opts.isScoped ? `@${opts.scope}/${opts.name}` : opts.name,
+    "version": "0.0.1",
     "private": false,
     "main": `dist/${opts.name}.umd.min.js`,
     dependencies: {
       "@luban-h5/lbs-text-align": "^0.0.3",
       "ant-design-vue": "^1.2.4",
       "font-awesome": "4.7.0",
+      "axios": "^0.19.0",
+      "vant": "^2.2.13"
     },
     devDependencies: {
       "@vue/cli-plugin-babel": "^4.0.0",
@@ -56,9 +59,13 @@ function addDependencies (api, opts) {
       "eslint-plugin-vue": "^5.0.0",
       "vue-template-compiler": "^2.6.10",
       "@vue/eslint-config-standard": "^4.0.0",
+      "sass-loader": "^8.0.0",
+      "sass": "^4.13.0"
     },
     scripts: {
-      "build": `vue-cli-service build --target lib --name ${opts.name} ./src/component/entry.js`
+      "build": "npm run build:component && npm run build:editor",
+      "build:component": `vue-cli-service build --target lib --name ${opts.name} ./src/component/index.js`,
+      "build:editor": "vue-cli-service build --no-clean --target lib --name editor ./src/component/editor.vue"
     },
     "license": "MIT"
   })

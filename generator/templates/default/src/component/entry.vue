@@ -15,6 +15,9 @@ import 'vant/lib/swipe-item/style'
 
 export default {
   name: '<%= options.name %>',
+  // default icon
+  // 默认 icon，配置文档参见：https://github.com/luban-h5/vue-cli-plugin-lbhc/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6-%E8%84%9A%E6%89%8B%E6%9E%B6%E7%AF%87%EF%BC%9Aicon-%E5%8F%82%E6%95%B0
+  icon: 'thumbs-o-up',
   components: {
     Swipe,
     SwipeItem

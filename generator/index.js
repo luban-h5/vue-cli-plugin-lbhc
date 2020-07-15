@@ -60,7 +60,7 @@ function addDependencies (api, opts) {
       "vue-template-compiler": "^2.6.10",
       "@vue/eslint-config-standard": "^4.0.0",
       "sass-loader": "^8.0.0",
-      "sass": "^4.13.0"
+      "sass": "^1.26.10"
     },
     scripts: {
       "build": "npm run build:component && npm run build:editor",
